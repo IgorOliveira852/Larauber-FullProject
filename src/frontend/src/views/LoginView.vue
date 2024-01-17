@@ -40,7 +40,7 @@ import { ref, reactive, onMounted } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router';
 
-const router = useRouter
+const router = useRouter()
 
 const credentials = reactive({
     phone: null
@@ -50,7 +50,7 @@ const waitingOnVerification = ref(false)
 
 onMounted(() => {
     if (localStorage.getItem('token')) {
-        router().push({
+        router.push({
             name: 'landing'
         })
     }
@@ -80,7 +80,7 @@ const handleLogin = () => {
             .then((response) => {
                 console.log(response.data); // auth token
                 localStorage.setItem('token', response.data)
-                router().push({
+                router.push({
                     name: 'landing'
                 })
             })
